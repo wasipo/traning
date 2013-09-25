@@ -26,7 +26,7 @@ for($j=0; $j < $input; $j++)
 	{
 		if($array[$k-1] > $array[$k])
 		{
-			swap($array[$k],$array[$k-1]);
+			list($array[$k],$array[$k-1]) = array($array[$k-1],$array[$k]);
 		}
 	}
 
@@ -38,11 +38,3 @@ for($j=0; $j < $input; $j++)
 	echo $array[$j].PHP_EOL;
 
 }
-
-function swap(&$x,&$y)
-{
-		$temp = $x;
-		$x = $y;
-		$y = $temp;
-}
-
