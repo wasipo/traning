@@ -14,10 +14,8 @@ foreach($array as $key => $val)
 	if(empty($key))
 	{
 		echo '===========no sort================'.PHP_EOL;
-		echo $val.PHP_EOL;
-	} else {
-		echo $val.PHP_EOL;
 	}
+		echo $val.PHP_EOL;
 
 }
 
