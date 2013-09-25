@@ -5,7 +5,7 @@ $array = array();
 $input = trim(fgets(STDIN));
 for($i = 0; $i < $input; $i++)
 {
-	$array[$i] = rand(0,1024);
+	$array[$i] = rand(0,4096);
 }
 
 foreach($array as $key => $val)
@@ -23,30 +23,28 @@ foreach($array as $key => $val)
 
 for($j=0; $j < $input; $j++)
 {
+
 	for($k=$input-1; $k>$j; $k--)
 	{
 		if($array[$k-1] > $array[$k])
 		{
-			$tmp = $array[$k];
-			$array[$k] = $array[$k-1];
-			$array[$k-1] = $tmp;
-
-			var_dump($array);
-
+			swap($array[$k],$array[$k-1]);
 		}
 	}
-}
 
-
-foreach($array as $key => $val)
-{
-	if(empty($key))
+	if(empty($j))
 	{
-		echo '===========bubble sort================'.PHP_EOL;
-		echo $val.PHP_EOL;
-	} else {
-		echo $val.PHP_EOL;
+		echo '===========sort================'.PHP_EOL;
 	}
+
+	echo $array[$j].PHP_EOL;
+
 }
 
+function swap(&$x,&$y)
+{
+		$temp = $x;
+		$x = $y;
+		$y = $temp;
+}
 
