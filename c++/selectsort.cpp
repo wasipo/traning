@@ -26,7 +26,7 @@ int main()
 
 	srand(time(NULL));
 
-	cout << "ソート前\n" << endl;
+	cout << "\nソート前" << endl;
 
 	for(i=0; i<arraysize; i++)
 	{
@@ -34,9 +34,7 @@ int main()
 		cout << array[i] << endl;
   }
 	
-	cout << "\n" << endl;
-
-	cout << "ソート後\n" << endl;
+	cout << "\nソート後" << endl;
 
 	for(i=0; i<arraysize; i++)
 	{
@@ -51,7 +49,5 @@ int main()
 		swap(&array[min],&array[i]);
 		cout << array[i] << endl;
 	}
-
-	cout << "\n" << endl;
 
 }
