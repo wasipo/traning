@@ -61,9 +61,27 @@ function mkadd($y,$m,$d,$data)
 		* $CalcMonthを割った時の余りを月として扱う
 		*/
 		$SetMonth = ($CalcMonth % 12);
+		$d = datechecker($SetYear,$SetMonth,$d);
+
+		//計算結果のunixタイムスタンプを返す
+		return mktime(0,0,0,$SetMonth,$d,$SetYear);
+	} else {
+
+		$d = datechecker($y,$CalcMonth,$d);	
+		return mktime(0,0,0,$CalcMonth,$d,$y);
+	}
+
+}
+
+/*
+* datechecker関数
+*	日付があるか無いかを判断して、入力値から条件に応じて数を引く
+* 計算された日付が変える
+*/
 
 
-		//日付があるか無いかを判断して、入力値から条件に応じて数を引く
+function datechecker($SetYear,$SetMonth,$d)
+{
 
 		if(!checkdate($SetMonth,$d,$SetYear) && $SetMonth == "2") 
 		{
@@ -72,29 +90,20 @@ function mkadd($y,$m,$d,$data)
 				{
 						//検索された月がうるう年で入力された日付が31だった場合、2を引く、30だった場合１を引く
 						if($d == 31){ $d = $d-2; } else if($d == 30){ $d = $d-1; }
+						return $d;
 				} else {
 						if($d == 31){ $d = $d-3; } else if($d == 30){ $d = $d-2; } else if($d == 29) { $d = $d-1; }
+						return $d;
 				}
 		} else if(!checkdate($SetMonth,$d,$SetYear)){
-				$d = $d-1;	
+				$d = $d-1;
+				return $d;
 		}
-
-		//計算結果のunixタイムスタンプを返す
-		return mktime(0,0,0,$SetMonth,$d,$SetYear);
-	} else {
-
-		//$CalcMonthの値が12より低い場合、それをそのまま月としてunixタイムスタンプを返す
-		return mktime(0,0,0,$CalcMonth,$d,$y);
-	}
 
 }
 
-
 $add_date = mkadd($iYear,$iMonth,$iDay,$inputmonth);
-
-$year = date("Y",$add_date);
-$month = date("m",$add_date);
-$day = date("d",$add_date);
+list($year,$month,$day) = array(date('Y',$add_date),date('m',$add_date),date('d',$add_date));
 $firstday = $year."/".$month."/01";
 $inputdate = $year."/".$month."/".$day;
 
