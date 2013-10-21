@@ -22,14 +22,18 @@ while($count <= $meres)
 	if($Wno === 3)
 	{
 		//その週の日付と曜日を出力
-		$mi = date("Y/m/d D",mktime(0,0,0,date("m"),$count,date("Y")));
-		//配列に分割
-		$mi = explode(" ",$mi);
-		//1番目にアクセス
-		if($mi[1] === "Wed")
+		foreach(range(1,12) as $mon)
 		{
-				echo $mi[0]."水曜見っけ".PHP_EOL;
+			$mi = date("Y/m/d D",mktime(0,0,0,$mon,$count,date("Y")));
+			//配列に分割
+			$mi = explode(" ",$mi);
+			//1番目にアクセス
+			if($mi[1] === "Wed")
+			{
+					echo $mi[0]."水曜見っけ".PHP_EOL;
+			}
 		}
+
 	}
 
 	$count++;
@@ -40,14 +44,21 @@ while($count <= $meres)
 
 
 //1日の週番号取得
-$md = date("Ymd w",mktime(0,0,0,date("m"),1,date("Y")));
+for($i=0; $i<12; $i++)
+{
+	$md = date("Ymd w",mktime(0,0,0,$i,1,date("Y")));
+}
 //分割
 $mi = explode(" ",$md);
 //最初の週の曜日番号+21
+var_dump($mi);
 $mr = $mi[1]+21;
 //日付取得。mktimeで日にちを21日足します。
-$mt = date("Y/m/d D",mktime(0,0,0,date("m"),$mi[1]+21,date("Y")));
+for($i = 0; $i<12; $i++)
+{
+	$mt = date("Y/m/d D",mktime(0,0,0,$i,$mi[1]+21,date("Y")));
+	echo "今月は".$mt."が多分水曜日でござる".PHP_EOL;
+}
 
-echo "今月は".$mt."が多分水曜日でござる".PHP_EOL;
 
 
