@@ -19,7 +19,7 @@ while($count <= $meres)
 	}
 
 	//3回Wnoがカウントアップしたら
-	if($Wno === 4)
+	if($Wno === 3)
 	{
 		//その週の日付と曜日を出力
 		$mi = date("Y/m/d D",mktime(0,0,0,date("m"),$count,date("Y")));
