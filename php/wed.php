@@ -25,6 +25,7 @@ while($count <= $meres)
 		foreach(range(1,12) as $mon)
 		{
 			$md = date("D",mktime(0,0,0,$mon,1,date("Y")));
+			//月初めが木曜なら一週飛ばす
 			if($md == "Thu")
 			{
 				$rcount = $count+7;
@@ -56,7 +57,7 @@ for($i=1; $i<13; $i++)
 	$md = date("Ymd w",mktime(0,0,0,$i,1,date("Y")));
 	//分割
 	$mi = explode(" ",$md);
-	//最初の週の曜日番号
+	//最初の週の曜日3以下で0じゃない場合
 	if($mi[1] <= 3 || $mi[1] === "0")
 	{
 		$Wno = 3;
@@ -67,7 +68,6 @@ for($i=1; $i<13; $i++)
 	}
 }
 
-//日付取得。mktimeで日にちを21日足します。
 for($i = 1; $i<13; $i++)
 {
 	$mt = date("Y/m/d D",mktime(0,0,0,$i,$mr[$i],date("Y")));
