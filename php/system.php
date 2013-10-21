@@ -1,17 +1,5 @@
-<!--
-<form method="post">
-	日にち<input type="text" name="input_date">
-	何ヵ月後<input type="text" name="input_month">
-	区分<input type="text" name="input_kubun">
-	<input type="submit">
-</form>
--->
 <?php
-/*
-$inputdate = $_POST["input_date"];
-$inputmonth = $_POST["input_month"];
-$inputkubun = $_POST["input_kubun"];
-*/
+
 
 echo "日付を入力してください。>> ";
 $inputdate = trim(fgets(STDIN));
