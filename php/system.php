@@ -92,11 +92,13 @@ function datechecker($SetYear,$SetMonth,$d)
 						if($d == 31){ $d = $d-2; } else if($d == 30){ $d = $d-1; }
 						return $d;
 				} else {
-						if($d == 31){ $d = $d-3; } else if($d == 30){ $d = $d-2; } else if($d == 29) { $d = $d-1; }
+						if($d == 31){ $d = $d-3; } else if($d == 30){ $d = $d-2; }
 						return $d;
 				}
 		} else if(!checkdate($SetMonth,$d,$SetYear)){
 				$d = $d-1;
+				return $d;
+		} else {
 				return $d;
 		}
 
