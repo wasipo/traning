@@ -75,13 +75,15 @@ function mkadd($y,$m,$d,$data)
 
 /*
 * datechecker関数
-*	日付があるか無いかを判断して、入力値から条件に応じて数を引く
+* 日付があるか無いかを判断して、入力値から条件に応じて数を引く
 * 計算された日付が変える
 */
 
 
 function datechecker($SetYear,$SetMonth,$d)
 {
+
+		if(empty($SetMonth)){$SetMonth = 12;}
 
 		if(!checkdate($SetMonth,$d,$SetYear) && $SetMonth == "2") 
 		{
