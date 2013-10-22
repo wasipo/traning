@@ -1,7 +1,7 @@
 <?php
 
 //ちょっとボロいけどこんな感じになりました。
-
+echo "==========================第四水曜=============================".PHP_EOL;
 //最終日取得
 $meres = date("t");
 
@@ -47,32 +47,36 @@ while($count <= $meres)
 	$count++;
 }
 
-echo "===============================================".PHP_EOL;
+echo "=====================第四週水曜==========================".PHP_EOL;
 
 $mr = array();
 
 for($i=1; $i<13; $i++)
 {
-	//1日の週番号取得
 	$md = date("Ymd w",mktime(0,0,0,$i,1,date("Y")));
-	//分割
 	$mi = explode(" ",$md);
-	//最初の週の曜日3以下で0じゃない場合
-	if($mi[1] <= 3 || $mi[1] === "0")
-	{
-		$Wno = 3;
-		$mr[$i] = (4-$mi[1])+7*$Wno;
-	} else {
-		$Wno = 4;
-		$mr[$i] = (4-$mi[1])+7*$Wno;
-	}
-}
 
-for($i = 1; $i<13; $i++)
-{
+	$Wno = 3;
+	$mr[$i] = (4-$mi[1])+7*$Wno;
+
 	$mt = date("Y/m/d D",mktime(0,0,0,$i,$mr[$i],date("Y")));
 	echo $mt.PHP_EOL;
 }
 
+echo "=====================第四週水曜==========================".PHP_EOL;
 
 
+$year = 2013;
+$target = 3; // = 水曜日
+
+for( $month = 1; $month < 13; $month++ ) {
+
+$time = mktime( 0, 0, 0, $month, 1, $year );
+$w = date( "w", $time );
+
+$adjust = $target - $w;
+
+$result = 22 + $adjust;
+
+echo $year ."年". $month ."月の第４週の水曜日は". $result ."日です。<br />\n";
+}
