@@ -81,25 +81,28 @@
 					データ出力
 			*/
 
-			$count = 0;
+			$diff = array();
 			foreach($abtmp as $order => $data)
 			{
 				$id = $post->ID;
+				
 				echo '<div class="article_content pos'.$post->ID.'">';
-				echo '<h2>'.rtrim($abtmp[$order][0]).'</h2>';
+				echo '<h2>'.preg_replace('/\d+$/', " ",$abtmp[$order][0]).'</h2>';
 				echo '<p class="content_p">'.$abtmp[$order][1][0].'</p>';
 				echo '</div>';
-				$arrtmp[$id] = $val[0];
-			}
 
-			foreach($arrtmp as $key => $val)
-			{
-				if(!empty($val))
+				if($order >= "100")
 				{
-					if ( !is_single() )
-					{
-						echo '<div class="poscon'.$post->ID.'"><span class="cl_btn">続きを読む</span></div>';
-					}
+					$diff[] = $order;
+				}
+
+				$keymax = count($abtmp);
+
+				if(($order == $keymax))
+				{
+					echo '<div class="poscon'.$post->ID.'"><span class="cl_btn">続きを読む</span></div>';
+				} else if(!empty($diff[$keymax-1])) {
+					echo '<div class="poscon'.$post->ID.'"><span class="cl_btn">続きを読む</span></div>';
 				}
 			}
 
