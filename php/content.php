@@ -55,6 +55,7 @@
 			$arrtmp = array();
 			$abtmp = array();
 			$defnum = 100;
+			$id = $post->ID;
 
 			/*
 					データ整理
@@ -83,29 +84,17 @@
 
 			$diff = array();
 			foreach($abtmp as $order => $data)
-			{
-				$id = $post->ID;
-				
+			{				
 				echo '<div class="article_content pos'.$post->ID.'">';
 				echo '<h2>'.preg_replace('/\d+$/', " ",$abtmp[$order][0]).'</h2>';
 				echo '<p class="content_p">'.$abtmp[$order][1][0].'</p>';
 				echo '</div>';
-
-				if($order >= 100)
-				{
-					$diff[] = $order;
-				}
-
-				$keymax = count($abtmp);
-
-				if(($order == $keymax))
-				{
-					echo '<div class="poscon'.$post->ID.'"><span class="cl_btn">続きを読む</span></div>';
-				} else if(!empty($diff[$keymax-1])) {
-					echo '<div class="poscon'.$post->ID.'"><span class="cl_btn">続きを読む</span></div>';
-				}
 			}
 
+			if(!is_single())
+			{
+				echo '<div class="poscon'.$post->ID.'"><span class="cl_btn">続きを読む</span></div>';
+			}
 		?>
 	</div><!-- .entry-content -->
 		<?php wp_link_pages( array( 'before' => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'twentythirteen' ) . '</span>', 'after' => '</div>', 'link_before' => '<span>', 'link_after' => '</span>' ) ); ?>
