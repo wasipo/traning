@@ -52,7 +52,6 @@
 		<?php
 
 			$headline = get_post_meta(get_the_id());
-			$arrtmp = array();
 			$abtmp = array();
 			$defnum = 100;
 			$id = $post->ID;
@@ -82,7 +81,6 @@
 					データ出力
 			*/
 
-			$diff = array();
 			foreach($abtmp as $order => $data)
 			{				
 				echo '<div class="article_content pos'.$id.'">';
