@@ -85,7 +85,7 @@
 			$diff = array();
 			foreach($abtmp as $order => $data)
 			{				
-				echo '<div class="article_content pos'.$post->ID.'">';
+				echo '<div class="article_content pos'.$id.'">';
 				echo '<h2>'.preg_replace('/\d+$/', " ",$abtmp[$order][0]).'</h2>';
 				echo '<p class="content_p">'.$abtmp[$order][1][0].'</p>';
 				echo '</div>';
@@ -93,8 +93,9 @@
 
 			if(!is_single())
 			{
-				echo '<div class="poscon'.$post->ID.'"><span class="cl_btn">続きを読む</span></div>';
+				echo '<div class="poscon'.$id.'"><span class="cl_btn">続きを読む</span></div>';
 			}
+
 		?>
 	</div><!-- .entry-content -->
 		<?php wp_link_pages( array( 'before' => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'twentythirteen' ) . '</span>', 'after' => '</div>', 'link_before' => '<span>', 'link_after' => '</span>' ) ); ?>
