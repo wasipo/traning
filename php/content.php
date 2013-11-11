@@ -91,7 +91,7 @@
 				echo '<p class="content_p">'.$abtmp[$order][1][0].'</p>';
 				echo '</div>';
 
-				if($order >= "100")
+				if($order >= 100)
 				{
 					$diff[] = $order;
 				}
