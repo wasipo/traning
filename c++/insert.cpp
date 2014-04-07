@@ -30,14 +30,14 @@ int main()
 	for(i=1; i<size; i++)
 	{
 			tmp = array[i];
-			if(array[i-1]>tmp)
+			if(array[i-1]<tmp)
 			{
 				j=i;
 				do
 				{
 					array[j]=array[j-1];
 					j--;
-				}while(j>0&&array[j-1]>tmp);
+				}while(j>0&&array[j-1]<tmp);
 				array[j] = tmp;
 			}
 	}
